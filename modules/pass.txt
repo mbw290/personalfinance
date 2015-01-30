@@ -1,0 +1,4 @@
+127.0.0.1
+svc_mysql
+cbVMI3i6Ol
+personalfinance

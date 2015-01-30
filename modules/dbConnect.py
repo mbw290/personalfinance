@@ -2,10 +2,15 @@
 
 import mysql.connector
 debug=1
+
+
+#connect to database
 def pfDBConnect (hostname,user,password,database,task):
   cnx = mysql.connector.connect(user=user, password=password,
                               host=hostname,
                               database=database)
+
+
   cursor = cnx.cursor()
 
   if debug == 1:
@@ -16,6 +21,11 @@ def pfDBConnect (hostname,user,password,database,task):
   cursor.close()
   cnx.close()
 
-  #print result
 
-pfDBConnect("127.0.0.1","svc_mysql","cbVMI3i6Ol","personalfinance","show tables")
+config = [line.rstrip() for line in open('pass.txt')]
+hostname=config[0]
+user=config[1]
+password=config[2]
+database=config[3]
+
+pfDBConnect(hostname,user,password,database,"describe account")
